@@ -35,6 +35,7 @@ app.post("/addUser", async (req, res) => {
     console.log(data);
     console.log("data inserted in DB");
     client.close();
+    res.send("User added");
 });
 
 app.listen(PORT, () => {
