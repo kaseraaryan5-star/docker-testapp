@@ -1,11 +1,7 @@
-FROM node
-
-ENV MONGO_DB_USERNAME=admin \
-    MONGO_DB_PWD=qwerty
-    
-RUN mkdir -p testapp
-
-COPY . /testapp
-
-CMD ["node","/testapp/server.js"]
-
+FROM node:20-alpine
+WORKDIR /testapp
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 5050
+CMD ["node", "server.js"]
